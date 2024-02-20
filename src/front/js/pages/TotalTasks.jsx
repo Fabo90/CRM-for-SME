@@ -5,6 +5,7 @@ import { Navbar } from '../component/Navbar.jsx';
 import { Footer } from '../component/Footer.jsx';
 import PropTypes from "prop-types";
 import Swal from 'sweetalert2'
+import "../../styles/totaltasks.css"
 
 export const TotalTasks = (props) => {
     const { store, actions } = useContext(Context);
