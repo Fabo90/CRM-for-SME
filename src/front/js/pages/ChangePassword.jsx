@@ -23,7 +23,19 @@ export const ChangePassword = () => {
     }, [store.token]);
 
     function handleSubmit(e) {
-        e.preventDefault
+        e.preventDefault();
+        const passwordRegex = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
+        if (!passwordRegex.test(newPassword)) {
+            Swal.fire({
+                icon: "error",
+                title: "Error",
+                text: "New password must be at least 8 characters long and contain at least one capital letter and one number",
+            });
+            setCurrentPassword("");
+            setNewPassword("");
+            setConfirmPassword("");
+            return;
+        }
         actions.changePassword(currentPassword, newPassword, confirmPassword);
         actions.tokenLogout();
         navigate("/");

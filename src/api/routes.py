@@ -12,6 +12,7 @@ from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
 from datetime import datetime
+from werkzeug.security import check_password_hash, generate_password_hash
 
 
 stripe.api_key = os.getenv("STRIPE_TOKEN")
@@ -50,9 +51,9 @@ def payment_link():
 def login_user():
     user_name = request.json.get('user_name')
     password = request.json.get('password')
-    user = User.query.filter_by(user_name=user_name, password=password).first()
+    user = User.query.filter_by(user_name=user_name).first()
 
-    if user is not None:
+    if user is not None and check_password_hash(user.password, password):
         identity_data = user.user_name
 
         print("Identity data:", identity_data)
@@ -66,20 +67,25 @@ def login_user():
 def create_user():
     email = request.json.get('email')
     user_name = request.json.get('user_name')
+    password = request.json.get('password')
     duplicate_email = User.query.filter_by(email=email).first()
     duplicate_user = User.query.filter_by(user_name=user_name).first()
-    user = User(email = email,
-                user_name = user_name,
-                password = request.json.get('password'), 
-                is_active = True,)
+    
     if duplicate_email:
         return jsonify({"msg":"Email already registered"}), 400 
     elif duplicate_user:
         return jsonify({"msg":"User already registered"}), 400
     else:
+        hashed_password = generate_password_hash(password, method='pbkdf2:sha256')
+        
+        user = User(email=email,
+                    user_name=user_name,
+                    password=hashed_password, 
+                    is_active=True)
+        
         db.session.add(user) 
         db.session.commit()
-        return jsonify({"msg":"User created succesfully"}), 200
+        return jsonify({"msg":"User created successfully"}), 200
 
 @api.route('/protected', methods=['GET'])
 @jwt_required()
@@ -104,13 +110,14 @@ def change_password():
 
     user = User.query.filter_by(user_name=current_user_identity).first()
 
-    if not user or user.password != current_password:
+    if not user or not check_password_hash(user.password, current_password):
         return jsonify({"message": "Incorrect current password"}), 401
 
     if new_password != confirm_password:
         return jsonify({"message": "New password and confirm password do not match"}), 400
 
-    user.password = new_password
+    hashed_password = generate_password_hash(new_password, method='pbkdf2:sha256')
+    user.password = hashed_password
     db.session.commit()
 
     return jsonify({"message": "Password changed successfully" }), 200
