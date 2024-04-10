@@ -1,15 +1,28 @@
-# WebApp boilerplate with React JS and Flask API
+# Custormer Relationship Managment for Small and Medium Enterprises
+CRM-for-SME is a web-based platform built to simplify client relationship management. It offers a centralized database for efficient client interaction management.<br>
+<img src="https://github.com/Fabo90/CRM-for-SME/assets/139248863/7cfa19bc-fda0-4128-a19a-c0d4fa5dc292" alt="logo" width="200" height="200">
+<img src="https://github.com/Fabo90/CRM-for-SME/assets/139248863/7c478a93-8f61-4dfb-9c23-6a90939d6267" width="800">
 
-Build web applications using React.js for the front end and python/flask for your backend API.
 
-- Documentation can be found here: https://start.4geeksacademy.com/starters/react-flask
-- Here is a video on [how to use this template](https://www.loom.com/share/f37c6838b3f1496c95111e515e83dd9b)
-- Integrated with Pipenv for package managing.
-- Fast deployment to heroku [in just a few steps here](https://start.4geeksacademy.com/backend/deploy-heroku-posgres).
-- Use of .env file.
-- SQLAlchemy integration for database abstraction.
+### Features:
 
-### 1) Installation:
+- Clients: Create and manage a client roster for easy access.
+- Tasks: Organize and track pending activities for each client.
+- Notes: Capture important client-related information for personalized interactions.
+- Billing: Generate invoices and track payments for services rendered.
+- Stripe Integration: Secure payment links streamline billing and enhance payment collection.
+- User Authentication: Validates input during signup, encrypts passwords, and protects user sessions.
+- Database Reliability: Interacts with a PostgreSQL database through SQLAlchemy for data integrity.
+- User Interaction: Visually appealing alerts and a polished graphical interface using SweetAlert, Bootstrap, and CSS3.
+
+### Demo Video:
+
+Watch a video walkthrough where I explain how CRM-for-SME works and demonstrates its key features.
+
+[![Demo Video](https://img.youtube.com/vi/YOUR_YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://youtu.be/GFLDsmT95I0?si=BxYA5gWUWXI_v5_Z)
+
+
+### Installation:
 
 > If you use Github Codespaces (recommended) or Gitpod this template will already come with Python, Node and the Posgres Database installed. If you are working locally make sure to install Python 3.10, Node 
 
@@ -31,51 +44,19 @@ It is recomended to install the backend first, make sure you have Python 3.8, Pi
 
 > Note: Codespaces users can connect to psql by typing: `psql -h localhost -U gitpod example`
 
-### Undo a migration
-
-You are also able to undo a migration by running
-
-```sh
-$ pipenv run downgrade
-```
-
-### Backend Populate Table Users
-
-To insert test users in the database execute the following command:
-
-```sh
-$ flask insert-test-users 5
-```
-
-And you will see the following message:
-
-```
-  Creating test users
-  test_user1@test.com created.
-  test_user2@test.com created.
-  test_user3@test.com created.
-  test_user4@test.com created.
-  test_user5@test.com created.
-  Users created successfully!
-```
-
-### **Important note for the database and the data inside it**
-
-Every Github codespace environment will have **its own database**, so if you're working with more people eveyone will have a different database and different records inside it. This data **will be lost**, so don't spend too much time manually creating records for testing, instead, you can automate adding records to your database by editing ```commands.py``` file inside ```/src/api``` folder. Edit line 32 function ```insert_test_data``` to insert the data according to your model (use the function ```insert_test_users``` above as an example). Then, all you need to do is run ```pipenv run insert-test-data```.
-
 ### Front-End Manual Installation:
 
 -   Make sure you are using node version 14+ and that you have already successfully installed and runned the backend.
 
 1. Install the packages: `$ npm install`
-2. Start coding! start the webpack dev server `$ npm run start`
-
-## Publish your website!
-
-This boilerplate it's 100% read to deploy with Render.com and Heroku in a matter of minutes. Please read the [official documentation about it](https://start.4geeksacademy.com/deploy).
+2. Start the webpack dev server `$ npm run start`
 
 ### Contributors
 
-This template was built as part of the 4Geeks Academy [Coding Bootcamp](https://4geeksacademy.com/us/coding-bootcamp) by [Alejandro Sanchez](https://twitter.com/alesanchezr) and many other contributors. Find out more about our [Full Stack Developer Course](https://4geeksacademy.com/us/coding-bootcamps/part-time-full-stack-developer), and [Data Science Bootcamp](https://4geeksacademy.com/us/coding-bootcamps/datascience-machine-learning).
+While the initial template for this project was graciously provided by [4Geeks Academy](https://4geeksacademy.com/us/coding-bootcamp), I want to emphasize that CRM-for-SME was developed independently. Although I began with a blank template, I took full responsibility for crafting and shaping every aspect of the project to meet its unique requirements and objectives.
 
-You can find other templates and resources like this at the [school github page](https://github.com/4geeksacademy/).
+I'd like to express my gratitude to the following contributors for their valuable input and efforts in enhancing the project:
+
+- [Daniel Jaimes](https://github.com/ingdev8023)
+- [Ricardo de Lima](https://github.com/ricardodelimaaa)
+- [Daniel Abarca](https://github.com/Braiton57)
