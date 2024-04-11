@@ -19,7 +19,7 @@ CRM-for-SME is a web-based platform built to simplify client relationship manage
 
 Watch a video walkthrough where I explain how CRM-for-SME works and demonstrates its key features.
 
-[![Demo Video](https://img.youtube.com/vi/YOUR_YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://youtu.be/GFLDsmT95I0?si=BxYA5gWUWXI_v5_Z)
+[Demo Video](https://youtu.be/GFLDsmT95I0?si=BxYA5gWUWXI_v5_Z)
 
 
 ### Installation:
